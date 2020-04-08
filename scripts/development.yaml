@@ -1,0 +1,42 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: joulon-dashboard
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: joulon-dashboard
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: joulon-dashboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: joulon-dashboard
+  template:
+    metadata:
+      labels:
+        app: joulon-dashboard
+    spec:
+      containers:
+      - name: joulon-dashboard
+        image: aniruth004/nodejs_envision:latest
+        env:
+        - name: PGHOST
+          value: "40.71.91.252"
+        - name: PGUSER
+          value: "postgres"
+        - name: PGDATABASE
+          value: "env_db"
+        - name: PGPASSWORD
+          value: "pass"
+        - name: PGPORT
+          value: "5432"
+        ports:
+        - containerPort: 8080
