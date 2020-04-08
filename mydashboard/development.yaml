@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
       - name: joulon-dashboard
-        image: aniruth004/nodejs_envision:latest
+        image: aniruth004/kubernetes-sample-app:latest
         env:
         - name: PGHOST
           value: "40.71.91.252"
