@@ -40,14 +40,13 @@ spec:
           value: "5432"
         ports:
         - containerPort: 8080
-        livenessProbe:
-            tcpSocket:
+          readinessProbe:
+            httpGet:
+              scheme: http
+              path: /health
               port: 8080
-            initialDelaySeconds: 5
-            periodSeconds: 5
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 8080
-          initialDelaySeconds: 5
-          periodSeconds: 3
+            initialDelaySeconds: 120
+            timeoutSeconds: 3
+            periodSeconds: 30
+            successThreshold: 1
+            failureThreshold: 5
