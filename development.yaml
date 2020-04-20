@@ -40,3 +40,5 @@ spec:
           value: "5432"
         ports:
         - containerPort: 8080
+        livenessProbe:
+          initialDelaySeconds: 60
