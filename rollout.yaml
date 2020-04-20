@@ -32,8 +32,6 @@ spec:
               path: /
               port: http
   strategy:
-    blueGreen:
-      activeService: rollouts-demo-dash
      canary: 
        steps:
        - setWeight: 20
