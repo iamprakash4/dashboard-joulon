@@ -2,13 +2,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: rollouts-demo-dash
+  name: rollouts-canary
 spec:
   ports:
   - port: 8080
     targetPort: 8080
   selector:
-    app: joulon-dashboard
+    app: rollouts-demo-dash
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
